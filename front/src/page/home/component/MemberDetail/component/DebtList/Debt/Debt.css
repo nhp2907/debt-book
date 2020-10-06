@@ -1,0 +1,9 @@
+.debt {
+ padding: 10px 0px;
+ border-bottom: 1px solid #f1f0f0;   
+}
+
+.debt span {
+    font-size: 14px;
+    color: gray;
+}

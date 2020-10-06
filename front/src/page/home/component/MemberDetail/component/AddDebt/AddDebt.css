@@ -1,0 +1,57 @@
+.add-debt {
+    flex: 0 1 auto;
+    padding: 10px 0px;
+}
+
+.add-debt .form {
+    float: left;
+    width: 80%;
+}
+.add-debt .form-control input {
+    margin: 5px 0px;
+
+    width: 70%;
+    max-width: 350px;
+    height: 35px;
+    padding: 0 10px;
+    border-radius: 15px;
+    background-color:  #F0F2F5;
+    border: 1px solid #F0F2F5;
+}
+
+.add-debt .form-control input:focus {
+    outline: none;
+    border: 2px solid #b6c0d4;
+}
+
+.add-debt .form-control label {
+    display: inline-block;
+    height: 35px;
+    min-width: 100px;
+    width: 100px;
+}
+.add-debt .submit  {
+    float: left;
+    width: 10%;
+    max-width: 150px;
+    min-width: 100px;
+}
+
+.add-debt .submit button {
+    margin: 5px 0px ;
+    background-color: #6c89c2;
+    border: none;
+    color: white;
+    height: 35px;
+    border-radius: 10px;
+    width: 100px;
+}
+
+.add-debt .submit button:focus {    
+    outline: none;
+    border: 2px solid #b6c0d4;
+}
+
+.clear-fix {
+    clear: both;
+}

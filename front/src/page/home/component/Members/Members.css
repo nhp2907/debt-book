@@ -1,0 +1,22 @@
+.members {
+    float: left;
+    border-right: 1px solid #E5E5E5;
+    padding-right: 30px;
+    width: 25%;
+    max-width: 300px;
+    height: 100%;
+}
+
+.members h2 {
+    padding: 10px 15px;
+}
+
+.members li {
+    list-style: none;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+.members li:hover {
+    background-color: rgb(240, 239, 239);
+}

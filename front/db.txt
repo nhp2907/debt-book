@@ -1,0 +1,28 @@
+- ghi nợ
+- tính nợ
+- xem lịch sử
+
+
+
++++++++++++++++++++++++
+databse
+MEMBER
+ + id
+ + name
+
+DEBT
+ + id
+ + crediter
+ + debtor
+ + amount
+ + descrption
+ + date_i
+ + user_i
+
+DEPT_AUDIT
+ + id
+ + debt_id
+ + date_u
+ + user_u
+
+
