@@ -2,6 +2,7 @@ package com.company.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "debt")
@@ -23,7 +24,7 @@ public class DebtEntity implements Serializable {
     private String insertUser;
 
     @Column(name = "date_i")
-    private LocalDate insertDate;
+    private LocalDateTime insertDate;
 
     private String description;
 
@@ -69,12 +70,12 @@ public class DebtEntity implements Serializable {
         this.insertUser = insertUser;
     }
 
-    public LocalDate getInsertDate() {
+    public LocalDateTime getInsertDate() {
 
         return insertDate;
     }
 
-    public void setInsertDate(LocalDate insertDate) {
+    public void setInsertDate(LocalDateTime insertDate) {
         this.insertDate = insertDate;
     }
 

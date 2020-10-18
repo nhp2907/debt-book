@@ -1,6 +1,7 @@
 package com.company.mapper;
 
 import com.company.dto.DebtDto;
+import com.company.dto.SignUpRequestDto;
 import com.company.dto.UserDto;
 import com.company.entity.DebtEntity;
 import com.company.entity.UserEntity;
@@ -8,7 +9,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-10-04T21:52:22+0700",
+    date = "2020-10-14T23:52:41+0700",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 14.0.1 (Oracle Corporation)"
 )
 public class SimpleSourceDestinationMapperImpl implements SimpleSourceDestinationMapper {
@@ -23,7 +24,6 @@ public class SimpleSourceDestinationMapperImpl implements SimpleSourceDestinatio
 
         userDto.setId( entity.getId() );
         userDto.setName( entity.getName() );
-        userDto.setUserName( entity.getUserName() );
         userDto.setPassword( entity.getPassword() );
 
         return userDto;
@@ -39,7 +39,6 @@ public class SimpleSourceDestinationMapperImpl implements SimpleSourceDestinatio
 
         userEntity.setId( dto.getId() );
         userEntity.setName( dto.getName() );
-        userEntity.setUserName( dto.getUserName() );
         userEntity.setPassword( dto.getPassword() );
 
         return userEntity;
@@ -53,7 +52,6 @@ public class SimpleSourceDestinationMapperImpl implements SimpleSourceDestinatio
 
         entity.setId( dto.getId() );
         entity.setName( dto.getName() );
-        entity.setUserName( dto.getUserName() );
         entity.setPassword( dto.getPassword() );
     }
 
@@ -96,5 +94,20 @@ public class SimpleSourceDestinationMapperImpl implements SimpleSourceDestinatio
         entity.setId( dto.getId() );
         entity.setAmount( dto.getAmount() );
         entity.setDescription( dto.getDescription() );
+    }
+
+    @Override
+    public UserEntity signupRequestDtoToUserEntity(SignUpRequestDto dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        UserEntity userEntity = new UserEntity();
+
+        userEntity.setName( dto.getName() );
+        userEntity.setUsername( dto.getUsername() );
+        userEntity.setPassword( dto.getPassword() );
+
+        return userEntity;
     }
 }

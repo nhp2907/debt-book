@@ -12,6 +12,11 @@ public interface DebtService {
     List<DebtEntity> findDebtsByCreditor(UserEntity creditor);
     List<DebtEntity> findDebtsByCreditorId(Long creditorId);
     List<DebtEntity> findDebtsByCreditorAndDebtor(UserEntity creditor, UserEntity debtor);
-    List<DebtEntity> findDebtsByCreditorIdAndDebtorId(Long creditorId, Long debtorId);
+    List<DebtEntity> getDebtsWithDebtor( Long debtorId);
 
+    List<DebtEntity> findDebtsBetweenUser(Long id, Long debtorId);
+
+    void deleteById(Long id);
+
+    void deleteAllDebtWithDebtor(String debtorUsername);
 }

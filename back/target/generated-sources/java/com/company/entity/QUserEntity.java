@@ -28,7 +28,7 @@ public class QUserEntity extends EntityPathBase<UserEntity> {
 
     public final StringPath password = createString("password");
 
-    public final StringPath userName = createString("userName");
+    public final StringPath username = createString("username");
 
     public QUserEntity(String variable) {
         super(UserEntity.class, forVariable(variable));

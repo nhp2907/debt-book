@@ -32,7 +32,7 @@ public class QDebtEntity extends EntityPathBase<DebtEntity> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final DatePath<java.time.LocalDate> insertDate = createDate("insertDate", java.time.LocalDate.class);
+    public final DateTimePath<java.time.LocalDateTime> insertDate = createDateTime("insertDate", java.time.LocalDateTime.class);
 
     public final StringPath insertUser = createString("insertUser");
 

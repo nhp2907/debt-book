@@ -14,4 +14,6 @@ public interface DebtRepository extends JpaRepository<DebtEntity, Long>, Queryds
     List<DebtEntity> findDebtsByCreditor(UserEntity creditor);
     List<DebtEntity> findDebtsByCreditorOrDebtor(UserEntity creditor, UserEntity debtor);
     List<DebtEntity> findDebtsByCreditorOrDebtorOrderByInsertDateDesc(UserEntity creditor, UserEntity debtor);
+    void deleteByCreditorAndDebtor(UserEntity creditor, UserEntity debtor);
+
 }

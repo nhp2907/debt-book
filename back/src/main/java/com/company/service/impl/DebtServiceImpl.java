@@ -6,16 +6,19 @@ import com.company.entity.UserEntity;
 import com.company.exception.EntityNotFoundException;
 import com.company.mapper.SimpleSourceDestinationMapper;
 import com.company.repository.DebtRepository;
+import com.company.security.AuthUtils;
 import com.company.service.DebtService;
 import com.company.service.UserService;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+@Transactional
 public class DebtServiceImpl implements DebtService {
 
     @Autowired
@@ -43,6 +46,7 @@ public class DebtServiceImpl implements DebtService {
             updateDebtEntityFromDto(dto, entity);
         }
         return debtRepository.save(entity);
+        // TODO test transactional auto save
     }
 
     @Override
@@ -57,20 +61,40 @@ public class DebtServiceImpl implements DebtService {
 
     @Override
     public List<DebtEntity> findDebtsByCreditorAndDebtor(UserEntity creditor, UserEntity debtor) {
-        return debtRepository.findDebtsByCreditorOrDebtorOrderByInsertDateDesc(creditor, debtor);
+        return debtRepository.findDebtsByCreditorOrDebtor(creditor, debtor);
     }
 
     @Override
-    public List<DebtEntity> findDebtsByCreditorIdAndDebtorId(Long creditorId, Long debtorId) {
-        return findDebtsByCreditorAndDebtor(userService.findById(creditorId), userService.findById(debtorId));
+    public List<DebtEntity> getDebtsWithDebtor(Long debtorId) {
+        return debtRepository.findDebtsBetweenUsers(AuthUtils.getCurrentUser().getId(), debtorId);
+    }
+
+    @Override
+    public List<DebtEntity> findDebtsBetweenUser(Long id1, Long id2) {
+        return debtRepository.findDebtsBetweenUsers(id1, id2);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        DebtEntity debtEntity = findById(id);
+        debtRepository.delete(debtEntity);
+    }
+
+    @Override
+    public void deleteAllDebtWithDebtor(String debtorUsername) {
+        UserEntity debtor = userService.findByUsername(debtorUsername);
+        List<DebtEntity> debts = findDebtsBetweenUser(AuthUtils.getCurrentUser().getId(), debtor.getId());
+        debts.forEach(debtEntity -> {
+            debtRepository.delete(debtEntity);
+        });
     }
 
 
     private DebtEntity createNewDebtEntity(DebtDto dto) {
         var entity = mapper.debtDtoToDebtEntity(dto);
         updateCreditorAndDebtor(dto, entity);
-        entity.setInsertUser(userService.findById(dto.getCreditorId()).getUserName());
-        entity.setInsertDate(LocalDate.now());
+        entity.setInsertUser(userService.findById(dto.getCreditorId()).getUsername());
+        entity.setInsertDate(LocalDateTime.now());
         return entity;
     }
 
