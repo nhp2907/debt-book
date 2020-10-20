@@ -9,12 +9,11 @@
 }
 .add-debt .form-control input {
     margin: 5px 0px;
-
     width: 70%;
     max-width: 350px;
     height: 35px;
     padding: 0 10px;
-    border-radius: 15px;
+    border-radius: 8px;
     background-color:  #F0F2F5;
     border: 1px solid #F0F2F5;
 }

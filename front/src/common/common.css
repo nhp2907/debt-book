@@ -1,0 +1,27 @@
+.common-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    display: grid;
+    grid-template-rows: 65% 35%;
+    background-color: white;
+    border-radius: 10px;
+    width: 25%;
+    min-width: 280px;
+    max-width: 500px;
+    height: 200px;
+    padding: 15px;
+    box-shadow: 2px 2px 20px 5px #acacac;
+}
+.common-container button {
+    font-weight: bold;
+    color: #5d5c5c;
+    width: 80%;
+    height: 35px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}

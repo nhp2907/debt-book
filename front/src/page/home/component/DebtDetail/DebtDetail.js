@@ -1,6 +1,6 @@
 import React from 'react'
-import './DebtDetail.css'
 function DebtDetail() {
+    require('./DebtDetail.css');
     return (
         <div className="debt-detail">
             <h4>debt detail workss</h4>

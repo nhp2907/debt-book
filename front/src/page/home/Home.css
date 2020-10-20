@@ -1,5 +1,15 @@
 .home {
-  flex: 1 1 auto;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 8% 92%;
+}
+
+.home .home-content {
+  display: grid;
+  grid-template-columns: 22% 48% 25%;
+  grid-template-rows: 100%;
   margin: 0 auto;
   width: 90%;
+  max-width: 1920px;
 }

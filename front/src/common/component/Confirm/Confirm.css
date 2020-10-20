@@ -1,0 +1,30 @@
+
+.common-container #message {
+    align-self: center;
+    justify-self: center;
+}
+
+.common-confirm-button {
+    width: 70%;
+    align-self: center;
+    justify-self: end;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border-radius: 5px;
+}
+.common-confirm-button button {
+    width: 90%;
+    justify-self: center;
+    /*font-weight: bold;*/
+    /*color: #5d5c5c;*/
+    /*width: 80px;*/
+    /*height: 35px;*/
+    /*border: none;*/
+    /*outline: none;*/
+    /*border-radius: 5px;*/
+    /*margin-right: 10px;*/
+}
+.common-confirm-button #positive {
+    background-color: #6c89c2;
+    color: white;
+}

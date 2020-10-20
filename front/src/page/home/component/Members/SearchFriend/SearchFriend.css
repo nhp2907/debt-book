@@ -1,0 +1,30 @@
+.search-friend {
+    width: 80%;
+    background-color: white;
+    box-shadow: 1px 1px 20px 2px #e0e0e0;
+    border-radius: 10px;
+}
+
+.search-friend .search-box input {
+    margin: 5px 0px;
+    width: 100%;
+    max-width: 350px;
+    height: 35px;
+    padding: 0 10px;
+    border-radius: 18px;
+    background-color:  #F0F2F5;
+    border: 1px solid #dbe2ec;
+    outline: none;
+}
+.search-friend .search-box input:hover {
+    border: 2px solid #b6c0d4;
+}
+
+.search-friend .search-result .result {
+    position: relative;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: white;
+    z-index: 10;
+
+}

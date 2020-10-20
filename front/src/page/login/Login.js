@@ -1,48 +1,62 @@
+import React, {useState, useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {Redirect, useHistory} from 'react-router-dom';
+import {setAuth} from '../../redux/auth/AuthAction';
 import Axios from 'axios';
-import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
-import { setIsLoggedIn } from '../../redux/auth/AuthAction';
-import './Login.css'
 
 function Login() {
-    const [userName, setUserName] = useState('');
+    require('./Login.css');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
-
     const auth = useSelector(state => state.auth)
-    
     const dispatch = useDispatch();
+    const history = useHistory();
+    useEffect(() => {
+        console.log("login useEffect")
+    })
 
     const login = () => {
-        // Axios.post('http://localhost:8080/users/auth', {
-        //     userName: userName,
-        //     password: password
-        // })
-        //     .then(res => setUser({
-        //         id: 1,
-        //         name: 'Nguyen Hoang Phuc'
-        //     }))
-        //     .catch(err => console.error(err));
-        dispatch(setIsLoggedIn(true))
+        // AuthService.login({username, password})
+        Axios.post('http://localhost:8080/api/users/auth/login', {username, password})
+            .then(res => {
+                localStorage.setItem('user', JSON.stringify(res.data));
+                dispatch(setAuth(res.data));
+            })
+            .catch(err => console.error('login err: ', err));
+
     };
 
-    if (auth.isLoggedIn) {
+    if (auth.id) {
         return (
-            <Redirect to="/" ></Redirect>
+            <Redirect to="/"></Redirect>
         )
     }
 
     return (
         <div className="login">
-            <div className="form-control">
-                <label htmlFor="">User name</label>
-                <input type="text" onChange={event => setUserName(event.target.value)} />
+            <div className="container">
+                <div className="header">
+                    <img src={require('../../assets/images/logo.png')} alt=""/>
+                    <h4>Log in to DebtBook</h4>
+                </div>
+                <div className="content">
+                    <div className="form-control">
+                        <label htmlFor="">User name</label>
+                        <input type="text" autoFocus onChange={event => setUsername(event.target.value)}/>
+                    </div>
+                    <div className="form-control">
+                        <label htmlFor="">Password</label>
+                        <input type="password" onChange={event => setPassword(event.target.value)}/>
+                    </div>
+                    <button onClick={login}>Log in</button>
+                </div>
+                <div className="footer">
+                    <div className="content">
+                        <span>New to Debtbook?</span>
+                        <span id="link" onClick={() => history.push('/signup')}>Create an account</span>
+                    </div>
+                </div>
             </div>
-            <div className="form-control">
-                <label htmlFor="">Password</label>
-                <input type="password" onChange={event => setPassword(event.target.value)} />
-            </div>
-            <button onClick={login}>Log in</button>
         </div>
     );
 }

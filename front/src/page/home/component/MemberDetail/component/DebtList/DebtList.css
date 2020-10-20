@@ -1,45 +1,66 @@
 .debt-list {
+    flex: 1 1 auto;
     display: flex;
     flex-flow: column;
-    flex: 1 1 auto;
-    clear: right;
-    height: 300px;
-    width: 100%;
 }   
-.list {
+.debt-list .list {
+    height: 300px;
     flex: 1 1 auto;
-    height: 100%;
-    padding-right: 10px;
-    overflow: hidden;
+    overflow-x: visible;
+    overflow-y: visible;
     border-bottom: 1px solid #E5E5E5;
 }
-.list:hover {
-    overflow-y: scroll;
+.debt-list .list:hover {
+    /*overflow-y: scroll;*/
 }
 
-.list::-webkit-scrollbar {
-    width: 10px;
+.debt-list .list::-webkit-scrollbar {
+    width: 0px;
 }
 
 /* Track */
-.list::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px rgb(218, 217, 217); 
+.debt-list .list::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(218, 217, 217);
     border-radius: 10px;
-  }
-   
-  /* Handle */
-  .list::-webkit-scrollbar-thumb {
-    background: rgb(201, 201, 201); 
-    border-radius: 10px;
-  }
-  
-  /* Handle on hover */
-  .list::-webkit-scrollbar-thumb:hover {
-    background: rgb(184, 183, 183); 
-  }
+}
 
-.debt-list h3 {
-    margin-top: 10px;
-    padding-bottom: 5px;
+/* Handle */
+.debt-list .list::-webkit-scrollbar-thumb {
+    background: rgb(201, 201, 201);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.debt-list .list::-webkit-scrollbar-thumb:hover {
+    background: rgb(184, 183, 183);
+}
+
+.debt-list-header {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 20% 10px;
+    grid-auto-rows: 40px;
+    flex: 0 1 auto;
     border-bottom: 1px solid #E5E5E5;
+}
+.debt-list-header h3 {
+    align-self: end;
+    display: table-cell;
+    height: 80%;
+}
+.debt-list-header button {
+    width: 100px;
+    height: 80%;
+    font-size: 15px;
+    color: #4f4f4f;
+    background-color: #eeeeee;
+    border: 1px solid #eeeded;
+    padding: 5px 8px;
+    outline: none;
+    border-radius: 4px;
+}
+
+.debt-list-header button:hover {
+    background-color: #dedede;
+    cursor: pointer;
 }

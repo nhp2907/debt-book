@@ -1,31 +1,44 @@
-import Axios from 'axios';
-import React, { useState, useEffect } from 'react'
-import './AddDebt.css'
+import React, {useState,  useRef} from 'react'
+import http from '../../../../../../service/Http';
+import {useDispatch, useSelector} from "react-redux";
+import {addDebt} from "../../../../../../redux/debts/DebtAction";
 
 function AddDebt(props) {
+    require('./AddDebt.css');
     const [description, setDescription] = useState('');
     const [amount, setAmount] = useState('');
-    const [amountInput, setAmountInput] = useState({});
+    const amountInput = useRef(null);
+    const auth = useSelector(state => state.auth);
+    const dispatch = useDispatch();
+
     function addNewDebt() {
-        let debt = {
-            creditorId: props.creditor.id,
-            debtorId: props.friend.id,
-            amount: amount,
-            description: description
-        };
-        Axios.post(`http://localhost:8080/users/${props.friend.id}/debts/new`, debt)
+        let debt;
+        if (amount > 0) {
+            debt = {
+                creditorId: auth.id,
+                debtorId: props.friend.id,
+                amount: amount,
+                description: description
+            };
+        } else if (amount < 0){
+            debt = {
+                debtorId: auth.id,
+                creditorId: props.friend.id,
+                amount: Math.abs(amount),
+                description: description
+            };
+        } else {
+            return;
+        }
+        http.post(`/debts/new`, debt)
             .then(res => {
                 console.log('Added new debt!');
-                props.addDebtCallBack(res.data);
+                dispatch(addDebt(res.data));
                 setAmount('');
                 setDescription('');
-                amountInput.focus();
+                amountInput.current.focus();
             })
             .catch(err => console.error(err));
-    }
-
-    function handleOnChange(event) {
-        setAmount(event.target.value);
     }
 
     return (
@@ -34,13 +47,15 @@ function AddDebt(props) {
                 <div className="form-control">
                     <label htmlFor="">Amount</label>
                     <input type="number" autoFocus
-                        value={amount}
-                        ref={input => setAmountInput(input)}
-                        onChange={handleOnChange} />
+                           value={amount}
+                           ref={amountInput}
+                           onChange={event => setAmount(event.target.value)}/>
                 </div>
                 <div className="form-control">
                     <label htmlFor="">Description</label>
-                    <input type="text" value={description} onChange={(event) => setDescription(event.target.value)} />
+                    <input type="text"
+                           value={description}
+                           onChange={event => setDescription(event.target.value)}/>
                 </div>
             </div>
             <div className="submit">

@@ -1,11 +1,12 @@
 import * as AuthAction from './AuthAction'
 
 const initialAuth = {
-    isLoggedIn: true,
-    user: {
-        id: 1,
-        name: 'Nguyen Hoang Phuc'
-    }
+    accessToken: null,
+    email: null,
+    id: null,
+    roles: [],
+    tokenType: null,
+    username: null
 };
 
 const authReducer = (state = initialAuth, actions) => {
@@ -14,9 +15,12 @@ const authReducer = (state = initialAuth, actions) => {
             return { ...state, isLoggedIn: actions.payload.isLoggedIn }
         case AuthAction.SET_USER:
             return { ...state, user: actions.payload.user }
+        case AuthAction.SET_AUTH:
+            return actions.payload.auth;
         default:
             return state;
     }
 }
+
 
 export default authReducer;

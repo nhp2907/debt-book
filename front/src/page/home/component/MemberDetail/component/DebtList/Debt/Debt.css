@@ -1,9 +1,93 @@
 .debt {
- padding: 10px 0px;
- border-bottom: 1px solid #f1f0f0;   
+    display: grid;
+    grid-template-columns: 90% 10%;
+    padding: 10px 10px;
+    margin: 3px 0px;
+    border-bottom: 1px solid #f1f0f0;
+    border-radius: 5px;
 }
 
 .debt span {
     font-size: 14px;
     color: gray;
 }
+
+.debt .option-container {
+    display: grid;
+    position: relative;
+}
+
+.debt .option-container .round-button {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    z-index: 0;
+}
+
+.debt:hover > .option-container .round-button button {
+    visibility: visible;
+}
+
+.debt .option-container button {
+    visibility: hidden;
+    text-align: center;
+    color: gray;
+    font-size: 16px;
+    padding-bottom: 25px;
+    border: none;
+    height: 20px;
+    font-weight: bolder;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: #F0F2F5;
+    z-index: -1;
+}
+
+.debt .option-container .round-button #toggle-option:checked ~ .option-content {
+    visibility: visible;
+}
+
+.debt .option-container button:hover {
+    cursor: pointer;
+}
+
+.debt .option-container button:focus {
+    outline: none;
+}
+
+.debt .option-container .option-content {
+    position: absolute;
+    top: 120%;
+    transform: translateX(-85%);
+    width: 200px;
+    padding: 5px;
+    border-radius: 7px;
+    border: 1px solid #F0F2F5;
+    box-shadow: 2px 2px 20px 2px #e0e0e0;
+    background-color: white;
+}
+.debt .option-container .option-content:hover {
+
+}
+.debt .option-content span {
+    font-size: 15px;
+    padding: 5px 10px;
+    margin: 3px 3px;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    background-color: white;
+}
+
+.debt .option-content span:hover {
+    cursor: pointer;
+    background-color: #F0F2F5;
+}
+

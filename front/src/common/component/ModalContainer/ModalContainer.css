@@ -1,0 +1,11 @@
+.modal-container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(203, 203, 203, 0.4);
+}
+
+.modal-container h2 {
+}

@@ -1,10 +1,5 @@
 .App {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     margin: 0 auto;
     height: 100vh   ;
-}
-
-.clear-fix {
-    clear: both;
 }

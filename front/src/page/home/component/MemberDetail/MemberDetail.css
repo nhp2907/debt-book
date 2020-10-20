@@ -1,13 +1,11 @@
 .member-detail {
     display: flex;
-    flex-direction: column;
-    padding: 0 20px;
-    float: left;
+    flex-flow: column;
+    padding: 0px 20px;
     height: 100%;
-    width: 45%;    
-    border-right: 1px solid #E5E5E5;
 }
 .member-detail .member-detail-header {
+    flex: 0 1 auto;
     border-bottom: solid 1px #E5E5E5;
     padding-bottom: 5px;
 }
@@ -19,10 +17,6 @@
 .member-detail .member-detail-header #value {
     margin-left: 20px;
     margin-right:5px;
-    font-size: 16;
+    font-size: 16px;
     font-weight: bold;
-}
-
-.clear-fix {
-    clear: both;
 }

@@ -1,0 +1,26 @@
+.custom-ui-validate-input {
+    display: flex;
+    flex-direction: column;
+}
+.custom-ui-validate-input input {
+    box-sizing: border-box;
+    border: 1px solid #b7b7b7;
+    border-radius: 8px;
+    height: 35px;
+    width: 100%;
+    margin-top: 5px;
+    padding: 0px 10px;
+    outline: none;
+    font-size: 15px;
+}
+
+.custom-ui-validate-input input:focus {
+    border-color: #003f96;
+    box-shadow: 0 0 1pt 2pt #a9bde5;
+}
+
+.custom-ui-validate-input span {
+    margin-top: 2px;
+    font-size: 13px;
+    color: red;
+}

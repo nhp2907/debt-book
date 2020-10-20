@@ -1,32 +1,21 @@
-import Axios from "axios";
+import http from "./Http";
 
+const path = '/users'
 
-class UserService {
-    url = 'http://localhost:8080';
-    path = '/users'
-    debtPath = '/debts'
-
-    getAll = () => {
-        Axios.get(this.url + this.path, body)
-            .then(res => res.data)
-            .catch(err => console.error(err));
-    }
-
-    getUserById = (id) => {
-        Axios.get(this.url + this.path + '/' + id)
-            .then(res => res.data)
-            .catch(err => console.error(err));
-    }
-
-    getDebtByDebtorId = (creditorId, debtorId) => {
-        Axios.get(this.url + this.path + `/${creditorId}/${this.debtPath}/${debtorId}`)
-        .then(res => res.body)
+export const getAll = () => {
+    return http.get(path)
+        .then(res => res.data)
         .catch(err => console.error(err));
-    }
-
 }
 
+export const getUserById = async (id) => {
+    try {
+        return (await http.get(this.path + '/' + id)).data;
+    } catch (error) {
+        // dispatch(setError(error));
+    }
+}
 
+export const getFriends = (userId) => {
 
-
-export default UserService;
+}

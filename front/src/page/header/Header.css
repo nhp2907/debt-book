@@ -1,10 +1,58 @@
+.app-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0px 0px 2px 0px #96a0ab;
+}
 
- .header {
-  background-color: #1E1E1E;
- }
- 
- .header h3 {
-    text-align: center;
-    padding: 18px 0px;
-    color: white;
-  }
+.app-header h3 {
+    font-weight: 500;
+    font-size: 20px;
+    color: black;
+}
+
+.app-header .container {
+    width: 90%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    align-items: center;
+    align-content: center;
+}
+
+.app-header .container .left-side {
+    justify-self: center;
+}
+.app-header .container .left-side img {
+    height: 30px;
+}
+.app-header .center {
+    justify-self: center;
+}
+
+.app-header .right-side {
+    display: grid;
+    grid-template-columns: 45% 45% 10%;
+}
+.app-header .right-side .account {
+    grid-column: 2/3;
+    display: flex;
+    align-items: center;
+}
+.app-header .right-side .account img {
+    background-color: gainsboro;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.app-header .right-side .account #account-label {
+    margin-left: 5px;
+    border-radius: 8px;
+    padding: 5px 8px;
+}
+
+.app-header .right-side .account #account-label:hover {
+    cursor: pointer;
+    background-color: #e3e3e3;
+}
