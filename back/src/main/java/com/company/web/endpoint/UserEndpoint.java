@@ -1,4 +1,4 @@
-package com.company.web;
+package com.company.web.endpoint;
 
 import com.company.dto.DebtDto;
 import com.company.entity.DebtEntity;

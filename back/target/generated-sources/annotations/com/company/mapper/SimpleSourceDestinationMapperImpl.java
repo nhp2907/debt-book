@@ -9,7 +9,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-10-14T23:52:41+0700",
+    date = "2020-10-19T09:26:07+0700",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 14.0.1 (Oracle Corporation)"
 )
 public class SimpleSourceDestinationMapperImpl implements SimpleSourceDestinationMapper {

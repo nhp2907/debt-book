@@ -1,9 +1,9 @@
-package com.company.web;
+package com.company.web.endpoint;
 
 
 import com.company.dto.LoginRequestDto;
 import com.company.dto.SignUpRequestDto;
-import com.company.exception.UserAlreadyExistsException;
+import com.company.exception.UserNameAlreadyExistsException;
 import com.company.security.JwtResponse;
 import com.company.security.jwt.JwtUtils;
 import com.company.security.services.UserDetailsImpl;
@@ -14,10 +14,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,9 +34,9 @@ public class AuthEndpoint {
     private JwtUtils jwtUtils;
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@Validated @RequestBody SignUpRequestDto requestDto) throws UserAlreadyExistsException {
+    public ResponseEntity<String> signup(@Valid @RequestBody SignUpRequestDto requestDto)  {
         userService.signup(requestDto);
-        return new ResponseEntity<String>("Sign up successfully!", HttpStatus.OK);
+        return new ResponseEntity<>("Sign up successfully!", HttpStatus.OK);
     }
 
     @PostMapping("/login")
@@ -48,7 +49,7 @@ public class AuthEndpoint {
 
             UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
             List<String> roles = userDetails.getAuthorities().stream()
-                    .map(item -> item.getAuthority())
+                    .map(GrantedAuthority::getAuthority)
                     .collect(Collectors.toList());
 
             return ResponseEntity.ok(new JwtResponse(jwt,

@@ -10,6 +10,6 @@ public class EntityNotFoundException extends BusinessException {
         super(String.format("%s with id = %d not found", clazz.getName(), id));
     }
     public EntityNotFoundException(String username, Class clazz) {
-        super(String.format("%s with username = %d not found", clazz.getName(), username));
+        super(String.format("%s with username = %s not found", clazz.getName(), username));
     }
 }

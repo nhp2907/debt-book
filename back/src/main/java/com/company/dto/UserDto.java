@@ -1,10 +1,5 @@
 package com.company.dto;
 
-import com.company.entity.Role;
-
-import java.util.HashSet;
-import java.util.Set;
-
 public class UserDto {
     private Long id;
     private String name;
@@ -44,5 +39,4 @@ public class UserDto {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }

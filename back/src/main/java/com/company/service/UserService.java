@@ -3,7 +3,7 @@ package com.company.service;
 import com.company.dto.SignUpRequestDto;
 import com.company.entity.DebtEntity;
 import com.company.entity.UserEntity;
-import com.company.exception.UserAlreadyExistsException;
+import com.company.exception.UserNameAlreadyExistsException;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public interface UserService {
 
     boolean existsByUsername(String username);
 
-    UserEntity signup(SignUpRequestDto requestDto) throws UserAlreadyExistsException;
+    UserEntity signup(SignUpRequestDto requestDto);
 
     List<UserEntity> findFriends();
 

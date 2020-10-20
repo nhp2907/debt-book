@@ -4,7 +4,7 @@ import com.company.dto.SignUpRequestDto;
 import com.company.entity.DebtEntity;
 import com.company.entity.UserEntity;
 import com.company.exception.EntityNotFoundException;
-import com.company.exception.UserAlreadyExistsException;
+import com.company.exception.UserNameAlreadyExistsException;
 import com.company.mapper.SimpleSourceDestinationMapper;
 import com.company.repository.UserRepository;
 import com.company.security.AuthUtils;
@@ -55,9 +55,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity signup(SignUpRequestDto requestDto) throws UserAlreadyExistsException {
+    public UserEntity signup(SignUpRequestDto requestDto)  {
         if (userRepository.existsByUsername(requestDto.getUsername())) {
-            throw new UserAlreadyExistsException(requestDto.getUsername());
+            throw new UserNameAlreadyExistsException(requestDto.getUsername());
         }
 
         UserEntity userEntity = createUserFromSignupRequestDto(requestDto);
